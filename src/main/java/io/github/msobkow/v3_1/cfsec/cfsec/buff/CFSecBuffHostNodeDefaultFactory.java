@@ -64,11 +64,43 @@ public class CFSecBuffHostNodeDefaultFactory
 		return( hpkey );
 	}
 
+	public CFSecBuffHostNodeHPKey ensureHPKey(ICFSecHostNodeHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFSecBuffHostNodeHPKey) {
+			return( (CFSecBuffHostNodeHPKey)key );
+		}
+		else {
+			CFSecBuffHostNodeHPKey mapped = new CFSecBuffHostNodeHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredHostNodeId( key.getRequiredHostNodeId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecHostNodeByClusterIdxKey newByClusterIdxKey() {
 		ICFSecHostNodeByClusterIdxKey key =
 			new CFSecBuffHostNodeByClusterIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffHostNodeByClusterIdxKey ensureByClusterIdxKey(ICFSecHostNodeByClusterIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffHostNodeByClusterIdxKey) {
+			return( (CFSecBuffHostNodeByClusterIdxKey)key );
+		}
+		else {
+			CFSecBuffHostNodeByClusterIdxKey mapped = new CFSecBuffHostNodeByClusterIdxKey();
+			mapped.setRequiredClusterId( key.getRequiredClusterId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -78,11 +110,41 @@ public class CFSecBuffHostNodeDefaultFactory
 		return( key );
 	}
 
+	public CFSecBuffHostNodeByUDescrIdxKey ensureByUDescrIdxKey(ICFSecHostNodeByUDescrIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffHostNodeByUDescrIdxKey) {
+			return( (CFSecBuffHostNodeByUDescrIdxKey)key );
+		}
+		else {
+			CFSecBuffHostNodeByUDescrIdxKey mapped = new CFSecBuffHostNodeByUDescrIdxKey();
+			mapped.setRequiredClusterId( key.getRequiredClusterId() );
+			mapped.setRequiredDescription( key.getRequiredDescription() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecHostNodeByHostNameIdxKey newByHostNameIdxKey() {
 		ICFSecHostNodeByHostNameIdxKey key =
 			new CFSecBuffHostNodeByHostNameIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffHostNodeByHostNameIdxKey ensureByHostNameIdxKey(ICFSecHostNodeByHostNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffHostNodeByHostNameIdxKey) {
+			return( (CFSecBuffHostNodeByHostNameIdxKey)key );
+		}
+		else {
+			CFSecBuffHostNodeByHostNameIdxKey mapped = new CFSecBuffHostNodeByHostNameIdxKey();
+			mapped.setRequiredClusterId( key.getRequiredClusterId() );
+			mapped.setRequiredHostName( key.getRequiredHostName() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -92,10 +154,38 @@ public class CFSecBuffHostNodeDefaultFactory
 		return( rec );
 	}
 
+	public CFSecBuffHostNode ensureRec(ICFSecHostNode rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFSecBuffHostNode) {
+			return( (CFSecBuffHostNode)rec );
+		}
+		else {
+			CFSecBuffHostNode mapped = new CFSecBuffHostNode();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecHostNodeH newHRec() {
 		ICFSecHostNodeH hrec =
 			new CFSecBuffHostNodeH();
 		return( hrec );
+	}
+
+	public CFSecBuffHostNodeH ensureHRec(ICFSecHostNodeH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFSecBuffHostNodeH) {
+			return( (CFSecBuffHostNodeH)hrec );
+		}
+		else {
+			CFSecBuffHostNodeH mapped = new CFSecBuffHostNodeH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

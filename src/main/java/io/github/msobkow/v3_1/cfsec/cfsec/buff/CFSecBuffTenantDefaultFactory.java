@@ -64,11 +64,43 @@ public class CFSecBuffTenantDefaultFactory
 		return( hpkey );
 	}
 
+	public CFSecBuffTenantHPKey ensureHPKey(ICFSecTenantHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFSecBuffTenantHPKey) {
+			return( (CFSecBuffTenantHPKey)key );
+		}
+		else {
+			CFSecBuffTenantHPKey mapped = new CFSecBuffTenantHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredId( key.getRequiredId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecTenantByClusterIdxKey newByClusterIdxKey() {
 		ICFSecTenantByClusterIdxKey key =
 			new CFSecBuffTenantByClusterIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffTenantByClusterIdxKey ensureByClusterIdxKey(ICFSecTenantByClusterIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffTenantByClusterIdxKey) {
+			return( (CFSecBuffTenantByClusterIdxKey)key );
+		}
+		else {
+			CFSecBuffTenantByClusterIdxKey mapped = new CFSecBuffTenantByClusterIdxKey();
+			mapped.setRequiredClusterId( key.getRequiredClusterId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -78,6 +110,21 @@ public class CFSecBuffTenantDefaultFactory
 		return( key );
 	}
 
+	public CFSecBuffTenantByUNameIdxKey ensureByUNameIdxKey(ICFSecTenantByUNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffTenantByUNameIdxKey) {
+			return( (CFSecBuffTenantByUNameIdxKey)key );
+		}
+		else {
+			CFSecBuffTenantByUNameIdxKey mapped = new CFSecBuffTenantByUNameIdxKey();
+			mapped.setRequiredClusterId( key.getRequiredClusterId() );
+			mapped.setRequiredTenantName( key.getRequiredTenantName() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecTenant newRec() {
 		ICFSecTenant rec =
@@ -85,10 +132,38 @@ public class CFSecBuffTenantDefaultFactory
 		return( rec );
 	}
 
+	public CFSecBuffTenant ensureRec(ICFSecTenant rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFSecBuffTenant) {
+			return( (CFSecBuffTenant)rec );
+		}
+		else {
+			CFSecBuffTenant mapped = new CFSecBuffTenant();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecTenantH newHRec() {
 		ICFSecTenantH hrec =
 			new CFSecBuffTenantH();
 		return( hrec );
+	}
+
+	public CFSecBuffTenantH ensureHRec(ICFSecTenantH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFSecBuffTenantH) {
+			return( (CFSecBuffTenantH)hrec );
+		}
+		else {
+			CFSecBuffTenantH mapped = new CFSecBuffTenantH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

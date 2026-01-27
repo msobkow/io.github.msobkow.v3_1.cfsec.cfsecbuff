@@ -64,11 +64,43 @@ public class CFSecBuffISOCcyDefaultFactory
 		return( hpkey );
 	}
 
+	public CFSecBuffISOCcyHPKey ensureHPKey(ICFSecISOCcyHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFSecBuffISOCcyHPKey) {
+			return( (CFSecBuffISOCcyHPKey)key );
+		}
+		else {
+			CFSecBuffISOCcyHPKey mapped = new CFSecBuffISOCcyHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredISOCcyId( key.getRequiredISOCcyId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecISOCcyByCcyCdIdxKey newByCcyCdIdxKey() {
 		ICFSecISOCcyByCcyCdIdxKey key =
 			new CFSecBuffISOCcyByCcyCdIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffISOCcyByCcyCdIdxKey ensureByCcyCdIdxKey(ICFSecISOCcyByCcyCdIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffISOCcyByCcyCdIdxKey) {
+			return( (CFSecBuffISOCcyByCcyCdIdxKey)key );
+		}
+		else {
+			CFSecBuffISOCcyByCcyCdIdxKey mapped = new CFSecBuffISOCcyByCcyCdIdxKey();
+			mapped.setRequiredISOCode( key.getRequiredISOCode() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -78,6 +110,20 @@ public class CFSecBuffISOCcyDefaultFactory
 		return( key );
 	}
 
+	public CFSecBuffISOCcyByCcyNmIdxKey ensureByCcyNmIdxKey(ICFSecISOCcyByCcyNmIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffISOCcyByCcyNmIdxKey) {
+			return( (CFSecBuffISOCcyByCcyNmIdxKey)key );
+		}
+		else {
+			CFSecBuffISOCcyByCcyNmIdxKey mapped = new CFSecBuffISOCcyByCcyNmIdxKey();
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecISOCcy newRec() {
 		ICFSecISOCcy rec =
@@ -85,10 +131,38 @@ public class CFSecBuffISOCcyDefaultFactory
 		return( rec );
 	}
 
+	public CFSecBuffISOCcy ensureRec(ICFSecISOCcy rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFSecBuffISOCcy) {
+			return( (CFSecBuffISOCcy)rec );
+		}
+		else {
+			CFSecBuffISOCcy mapped = new CFSecBuffISOCcy();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecISOCcyH newHRec() {
 		ICFSecISOCcyH hrec =
 			new CFSecBuffISOCcyH();
 		return( hrec );
+	}
+
+	public CFSecBuffISOCcyH ensureHRec(ICFSecISOCcyH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFSecBuffISOCcyH) {
+			return( (CFSecBuffISOCcyH)hrec );
+		}
+		else {
+			CFSecBuffISOCcyH mapped = new CFSecBuffISOCcyH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

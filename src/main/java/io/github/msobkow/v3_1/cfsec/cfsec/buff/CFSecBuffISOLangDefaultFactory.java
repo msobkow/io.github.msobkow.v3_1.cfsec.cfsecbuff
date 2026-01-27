@@ -64,11 +64,43 @@ public class CFSecBuffISOLangDefaultFactory
 		return( hpkey );
 	}
 
+	public CFSecBuffISOLangHPKey ensureHPKey(ICFSecISOLangHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFSecBuffISOLangHPKey) {
+			return( (CFSecBuffISOLangHPKey)key );
+		}
+		else {
+			CFSecBuffISOLangHPKey mapped = new CFSecBuffISOLangHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredISOLangId( key.getRequiredISOLangId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecISOLangByCode3IdxKey newByCode3IdxKey() {
 		ICFSecISOLangByCode3IdxKey key =
 			new CFSecBuffISOLangByCode3IdxKey();
 		return( key );
+	}
+
+	public CFSecBuffISOLangByCode3IdxKey ensureByCode3IdxKey(ICFSecISOLangByCode3IdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffISOLangByCode3IdxKey) {
+			return( (CFSecBuffISOLangByCode3IdxKey)key );
+		}
+		else {
+			CFSecBuffISOLangByCode3IdxKey mapped = new CFSecBuffISOLangByCode3IdxKey();
+			mapped.setRequiredISO6392Code( key.getRequiredISO6392Code() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -78,6 +110,20 @@ public class CFSecBuffISOLangDefaultFactory
 		return( key );
 	}
 
+	public CFSecBuffISOLangByCode2IdxKey ensureByCode2IdxKey(ICFSecISOLangByCode2IdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffISOLangByCode2IdxKey) {
+			return( (CFSecBuffISOLangByCode2IdxKey)key );
+		}
+		else {
+			CFSecBuffISOLangByCode2IdxKey mapped = new CFSecBuffISOLangByCode2IdxKey();
+			mapped.setOptionalISO6391Code( key.getOptionalISO6391Code() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecISOLang newRec() {
 		ICFSecISOLang rec =
@@ -85,10 +131,38 @@ public class CFSecBuffISOLangDefaultFactory
 		return( rec );
 	}
 
+	public CFSecBuffISOLang ensureRec(ICFSecISOLang rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFSecBuffISOLang) {
+			return( (CFSecBuffISOLang)rec );
+		}
+		else {
+			CFSecBuffISOLang mapped = new CFSecBuffISOLang();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecISOLangH newHRec() {
 		ICFSecISOLangH hrec =
 			new CFSecBuffISOLangH();
 		return( hrec );
+	}
+
+	public CFSecBuffISOLangH ensureHRec(ICFSecISOLangH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFSecBuffISOLangH) {
+			return( (CFSecBuffISOLangH)hrec );
+		}
+		else {
+			CFSecBuffISOLangH mapped = new CFSecBuffISOLangH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

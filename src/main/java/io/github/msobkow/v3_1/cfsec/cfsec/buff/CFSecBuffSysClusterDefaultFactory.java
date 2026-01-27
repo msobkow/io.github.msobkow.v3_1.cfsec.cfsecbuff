@@ -64,10 +64,38 @@ public class CFSecBuffSysClusterDefaultFactory
 		return( key );
 	}
 
+	public CFSecBuffSysClusterByClusterIdxKey ensureByClusterIdxKey(ICFSecSysClusterByClusterIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffSysClusterByClusterIdxKey) {
+			return( (CFSecBuffSysClusterByClusterIdxKey)key );
+		}
+		else {
+			CFSecBuffSysClusterByClusterIdxKey mapped = new CFSecBuffSysClusterByClusterIdxKey();
+			mapped.setRequiredClusterId( key.getRequiredClusterId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecSysCluster newRec() {
 		ICFSecSysCluster rec =
 			new CFSecBuffSysCluster();
 		return( rec );
+	}
+
+	public CFSecBuffSysCluster ensureRec(ICFSecSysCluster rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFSecBuffSysCluster) {
+			return( (CFSecBuffSysCluster)rec );
+		}
+		else {
+			CFSecBuffSysCluster mapped = new CFSecBuffSysCluster();
+			mapped.set(rec);
+			return( mapped );
+		}
 	}
 }

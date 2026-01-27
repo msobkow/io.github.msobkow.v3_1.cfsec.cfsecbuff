@@ -64,11 +64,43 @@ public class CFSecBuffServiceTypeDefaultFactory
 		return( hpkey );
 	}
 
+	public CFSecBuffServiceTypeHPKey ensureHPKey(ICFSecServiceTypeHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFSecBuffServiceTypeHPKey) {
+			return( (CFSecBuffServiceTypeHPKey)key );
+		}
+		else {
+			CFSecBuffServiceTypeHPKey mapped = new CFSecBuffServiceTypeHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredServiceTypeId( key.getRequiredServiceTypeId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecServiceTypeByUDescrIdxKey newByUDescrIdxKey() {
 		ICFSecServiceTypeByUDescrIdxKey key =
 			new CFSecBuffServiceTypeByUDescrIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffServiceTypeByUDescrIdxKey ensureByUDescrIdxKey(ICFSecServiceTypeByUDescrIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffServiceTypeByUDescrIdxKey) {
+			return( (CFSecBuffServiceTypeByUDescrIdxKey)key );
+		}
+		else {
+			CFSecBuffServiceTypeByUDescrIdxKey mapped = new CFSecBuffServiceTypeByUDescrIdxKey();
+			mapped.setRequiredDescription( key.getRequiredDescription() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -78,10 +110,38 @@ public class CFSecBuffServiceTypeDefaultFactory
 		return( rec );
 	}
 
+	public CFSecBuffServiceType ensureRec(ICFSecServiceType rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFSecBuffServiceType) {
+			return( (CFSecBuffServiceType)rec );
+		}
+		else {
+			CFSecBuffServiceType mapped = new CFSecBuffServiceType();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecServiceTypeH newHRec() {
 		ICFSecServiceTypeH hrec =
 			new CFSecBuffServiceTypeH();
 		return( hrec );
+	}
+
+	public CFSecBuffServiceTypeH ensureHRec(ICFSecServiceTypeH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFSecBuffServiceTypeH) {
+			return( (CFSecBuffServiceTypeH)hrec );
+		}
+		else {
+			CFSecBuffServiceTypeH mapped = new CFSecBuffServiceTypeH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

@@ -64,11 +64,45 @@ public class CFSecBuffISOCtryLangDefaultFactory
         return( pkey );
     }
 
+	public CFSecBuffISOCtryLangPKey ensurePKey(ICFSecISOCtryLangPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffISOCtryLangPKey) {
+			return( (CFSecBuffISOCtryLangPKey)key );
+		}
+		else {
+			CFSecBuffISOCtryLangPKey mapped = new CFSecBuffISOCtryLangPKey();
+			mapped.setRequiredContainerCtry( key.getRequiredISOCtryId() );
+			mapped.setRequiredParentLang( key.getRequiredISOLangId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecISOCtryLangHPKey newHPKey() {
 		ICFSecISOCtryLangHPKey hpkey =
 			new CFSecBuffISOCtryLangHPKey();
 		return( hpkey );
+	}
+
+	public CFSecBuffISOCtryLangHPKey ensureHPKey(ICFSecISOCtryLangHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFSecBuffISOCtryLangHPKey) {
+			return( (CFSecBuffISOCtryLangHPKey)key );
+		}
+		else {
+			CFSecBuffISOCtryLangHPKey mapped = new CFSecBuffISOCtryLangHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredISOCtryId( key.getRequiredISOCtryId() );
+			mapped.setRequiredISOLangId( key.getRequiredISOLangId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -78,11 +112,39 @@ public class CFSecBuffISOCtryLangDefaultFactory
 		return( key );
 	}
 
+	public CFSecBuffISOCtryLangByCtryIdxKey ensureByCtryIdxKey(ICFSecISOCtryLangByCtryIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffISOCtryLangByCtryIdxKey) {
+			return( (CFSecBuffISOCtryLangByCtryIdxKey)key );
+		}
+		else {
+			CFSecBuffISOCtryLangByCtryIdxKey mapped = new CFSecBuffISOCtryLangByCtryIdxKey();
+			mapped.setRequiredISOCtryId( key.getRequiredISOCtryId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecISOCtryLangByLangIdxKey newByLangIdxKey() {
 		ICFSecISOCtryLangByLangIdxKey key =
 			new CFSecBuffISOCtryLangByLangIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffISOCtryLangByLangIdxKey ensureByLangIdxKey(ICFSecISOCtryLangByLangIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffISOCtryLangByLangIdxKey) {
+			return( (CFSecBuffISOCtryLangByLangIdxKey)key );
+		}
+		else {
+			CFSecBuffISOCtryLangByLangIdxKey mapped = new CFSecBuffISOCtryLangByLangIdxKey();
+			mapped.setRequiredISOLangId( key.getRequiredISOLangId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -92,10 +154,38 @@ public class CFSecBuffISOCtryLangDefaultFactory
 		return( rec );
 	}
 
+	public CFSecBuffISOCtryLang ensureRec(ICFSecISOCtryLang rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFSecBuffISOCtryLang) {
+			return( (CFSecBuffISOCtryLang)rec );
+		}
+		else {
+			CFSecBuffISOCtryLang mapped = new CFSecBuffISOCtryLang();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecISOCtryLangH newHRec() {
 		ICFSecISOCtryLangH hrec =
 			new CFSecBuffISOCtryLangH();
 		return( hrec );
+	}
+
+	public CFSecBuffISOCtryLangH ensureHRec(ICFSecISOCtryLangH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFSecBuffISOCtryLangH) {
+			return( (CFSecBuffISOCtryLangH)hrec );
+		}
+		else {
+			CFSecBuffISOCtryLangH mapped = new CFSecBuffISOCtryLangH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

@@ -64,11 +64,45 @@ public class CFSecBuffSecDeviceDefaultFactory
         return( pkey );
     }
 
+	public CFSecBuffSecDevicePKey ensurePKey(ICFSecSecDevicePKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffSecDevicePKey) {
+			return( (CFSecBuffSecDevicePKey)key );
+		}
+		else {
+			CFSecBuffSecDevicePKey mapped = new CFSecBuffSecDevicePKey();
+			mapped.setRequiredContainerSecUser( key.getRequiredSecUserId() );
+			mapped.setRequiredDevName( key.getRequiredDevName() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecSecDeviceHPKey newHPKey() {
 		ICFSecSecDeviceHPKey hpkey =
 			new CFSecBuffSecDeviceHPKey();
 		return( hpkey );
+	}
+
+	public CFSecBuffSecDeviceHPKey ensureHPKey(ICFSecSecDeviceHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFSecBuffSecDeviceHPKey) {
+			return( (CFSecBuffSecDeviceHPKey)key );
+		}
+		else {
+			CFSecBuffSecDeviceHPKey mapped = new CFSecBuffSecDeviceHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredSecUserId( key.getRequiredSecUserId() );
+			mapped.setRequiredDevName( key.getRequiredDevName() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -78,11 +112,40 @@ public class CFSecBuffSecDeviceDefaultFactory
 		return( key );
 	}
 
+	public CFSecBuffSecDeviceByNameIdxKey ensureByNameIdxKey(ICFSecSecDeviceByNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffSecDeviceByNameIdxKey) {
+			return( (CFSecBuffSecDeviceByNameIdxKey)key );
+		}
+		else {
+			CFSecBuffSecDeviceByNameIdxKey mapped = new CFSecBuffSecDeviceByNameIdxKey();
+			mapped.setRequiredSecUserId( key.getRequiredSecUserId() );
+			mapped.setRequiredDevName( key.getRequiredDevName() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecSecDeviceByUserIdxKey newByUserIdxKey() {
 		ICFSecSecDeviceByUserIdxKey key =
 			new CFSecBuffSecDeviceByUserIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffSecDeviceByUserIdxKey ensureByUserIdxKey(ICFSecSecDeviceByUserIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffSecDeviceByUserIdxKey) {
+			return( (CFSecBuffSecDeviceByUserIdxKey)key );
+		}
+		else {
+			CFSecBuffSecDeviceByUserIdxKey mapped = new CFSecBuffSecDeviceByUserIdxKey();
+			mapped.setRequiredSecUserId( key.getRequiredSecUserId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -92,10 +155,38 @@ public class CFSecBuffSecDeviceDefaultFactory
 		return( rec );
 	}
 
+	public CFSecBuffSecDevice ensureRec(ICFSecSecDevice rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFSecBuffSecDevice) {
+			return( (CFSecBuffSecDevice)rec );
+		}
+		else {
+			CFSecBuffSecDevice mapped = new CFSecBuffSecDevice();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecSecDeviceH newHRec() {
 		ICFSecSecDeviceH hrec =
 			new CFSecBuffSecDeviceH();
 		return( hrec );
+	}
+
+	public CFSecBuffSecDeviceH ensureHRec(ICFSecSecDeviceH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFSecBuffSecDeviceH) {
+			return( (CFSecBuffSecDeviceH)hrec );
+		}
+		else {
+			CFSecBuffSecDeviceH mapped = new CFSecBuffSecDeviceH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

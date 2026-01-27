@@ -64,11 +64,43 @@ public class CFSecBuffTSecGroupDefaultFactory
 		return( hpkey );
 	}
 
+	public CFSecBuffTSecGroupHPKey ensureHPKey(ICFSecTSecGroupHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFSecBuffTSecGroupHPKey) {
+			return( (CFSecBuffTSecGroupHPKey)key );
+		}
+		else {
+			CFSecBuffTSecGroupHPKey mapped = new CFSecBuffTSecGroupHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredTSecGroupId( key.getRequiredTSecGroupId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecTSecGroupByTenantIdxKey newByTenantIdxKey() {
 		ICFSecTSecGroupByTenantIdxKey key =
 			new CFSecBuffTSecGroupByTenantIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffTSecGroupByTenantIdxKey ensureByTenantIdxKey(ICFSecTSecGroupByTenantIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffTSecGroupByTenantIdxKey) {
+			return( (CFSecBuffTSecGroupByTenantIdxKey)key );
+		}
+		else {
+			CFSecBuffTSecGroupByTenantIdxKey mapped = new CFSecBuffTSecGroupByTenantIdxKey();
+			mapped.setRequiredTenantId( key.getRequiredTenantId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -78,11 +110,41 @@ public class CFSecBuffTSecGroupDefaultFactory
 		return( key );
 	}
 
+	public CFSecBuffTSecGroupByTenantVisIdxKey ensureByTenantVisIdxKey(ICFSecTSecGroupByTenantVisIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffTSecGroupByTenantVisIdxKey) {
+			return( (CFSecBuffTSecGroupByTenantVisIdxKey)key );
+		}
+		else {
+			CFSecBuffTSecGroupByTenantVisIdxKey mapped = new CFSecBuffTSecGroupByTenantVisIdxKey();
+			mapped.setRequiredTenantId( key.getRequiredTenantId() );
+			mapped.setRequiredIsVisible( key.getRequiredIsVisible() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecTSecGroupByUNameIdxKey newByUNameIdxKey() {
 		ICFSecTSecGroupByUNameIdxKey key =
 			new CFSecBuffTSecGroupByUNameIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffTSecGroupByUNameIdxKey ensureByUNameIdxKey(ICFSecTSecGroupByUNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffTSecGroupByUNameIdxKey) {
+			return( (CFSecBuffTSecGroupByUNameIdxKey)key );
+		}
+		else {
+			CFSecBuffTSecGroupByUNameIdxKey mapped = new CFSecBuffTSecGroupByUNameIdxKey();
+			mapped.setRequiredTenantId( key.getRequiredTenantId() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -92,10 +154,38 @@ public class CFSecBuffTSecGroupDefaultFactory
 		return( rec );
 	}
 
+	public CFSecBuffTSecGroup ensureRec(ICFSecTSecGroup rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFSecBuffTSecGroup) {
+			return( (CFSecBuffTSecGroup)rec );
+		}
+		else {
+			CFSecBuffTSecGroup mapped = new CFSecBuffTSecGroup();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecTSecGroupH newHRec() {
 		ICFSecTSecGroupH hrec =
 			new CFSecBuffTSecGroupH();
 		return( hrec );
+	}
+
+	public CFSecBuffTSecGroupH ensureHRec(ICFSecTSecGroupH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFSecBuffTSecGroupH) {
+			return( (CFSecBuffTSecGroupH)hrec );
+		}
+		else {
+			CFSecBuffTSecGroupH mapped = new CFSecBuffTSecGroupH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

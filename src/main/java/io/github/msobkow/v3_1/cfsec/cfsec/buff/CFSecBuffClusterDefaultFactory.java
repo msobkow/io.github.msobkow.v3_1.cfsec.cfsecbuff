@@ -64,11 +64,43 @@ public class CFSecBuffClusterDefaultFactory
 		return( hpkey );
 	}
 
+	public CFSecBuffClusterHPKey ensureHPKey(ICFSecClusterHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFSecBuffClusterHPKey) {
+			return( (CFSecBuffClusterHPKey)key );
+		}
+		else {
+			CFSecBuffClusterHPKey mapped = new CFSecBuffClusterHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredId( key.getRequiredId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecClusterByUDomNameIdxKey newByUDomNameIdxKey() {
 		ICFSecClusterByUDomNameIdxKey key =
 			new CFSecBuffClusterByUDomNameIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffClusterByUDomNameIdxKey ensureByUDomNameIdxKey(ICFSecClusterByUDomNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffClusterByUDomNameIdxKey) {
+			return( (CFSecBuffClusterByUDomNameIdxKey)key );
+		}
+		else {
+			CFSecBuffClusterByUDomNameIdxKey mapped = new CFSecBuffClusterByUDomNameIdxKey();
+			mapped.setRequiredFullDomName( key.getRequiredFullDomName() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -78,6 +110,20 @@ public class CFSecBuffClusterDefaultFactory
 		return( key );
 	}
 
+	public CFSecBuffClusterByUDescrIdxKey ensureByUDescrIdxKey(ICFSecClusterByUDescrIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffClusterByUDescrIdxKey) {
+			return( (CFSecBuffClusterByUDescrIdxKey)key );
+		}
+		else {
+			CFSecBuffClusterByUDescrIdxKey mapped = new CFSecBuffClusterByUDescrIdxKey();
+			mapped.setRequiredDescription( key.getRequiredDescription() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecCluster newRec() {
 		ICFSecCluster rec =
@@ -85,10 +131,38 @@ public class CFSecBuffClusterDefaultFactory
 		return( rec );
 	}
 
+	public CFSecBuffCluster ensureRec(ICFSecCluster rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFSecBuffCluster) {
+			return( (CFSecBuffCluster)rec );
+		}
+		else {
+			CFSecBuffCluster mapped = new CFSecBuffCluster();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecClusterH newHRec() {
 		ICFSecClusterH hrec =
 			new CFSecBuffClusterH();
 		return( hrec );
+	}
+
+	public CFSecBuffClusterH ensureHRec(ICFSecClusterH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFSecBuffClusterH) {
+			return( (CFSecBuffClusterH)hrec );
+		}
+		else {
+			CFSecBuffClusterH mapped = new CFSecBuffClusterH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

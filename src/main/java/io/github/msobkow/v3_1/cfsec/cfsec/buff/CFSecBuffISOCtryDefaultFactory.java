@@ -64,11 +64,43 @@ public class CFSecBuffISOCtryDefaultFactory
 		return( hpkey );
 	}
 
+	public CFSecBuffISOCtryHPKey ensureHPKey(ICFSecISOCtryHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFSecBuffISOCtryHPKey) {
+			return( (CFSecBuffISOCtryHPKey)key );
+		}
+		else {
+			CFSecBuffISOCtryHPKey mapped = new CFSecBuffISOCtryHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredISOCtryId( key.getRequiredISOCtryId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecISOCtryByISOCodeIdxKey newByISOCodeIdxKey() {
 		ICFSecISOCtryByISOCodeIdxKey key =
 			new CFSecBuffISOCtryByISOCodeIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffISOCtryByISOCodeIdxKey ensureByISOCodeIdxKey(ICFSecISOCtryByISOCodeIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffISOCtryByISOCodeIdxKey) {
+			return( (CFSecBuffISOCtryByISOCodeIdxKey)key );
+		}
+		else {
+			CFSecBuffISOCtryByISOCodeIdxKey mapped = new CFSecBuffISOCtryByISOCodeIdxKey();
+			mapped.setRequiredISOCode( key.getRequiredISOCode() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -78,6 +110,20 @@ public class CFSecBuffISOCtryDefaultFactory
 		return( key );
 	}
 
+	public CFSecBuffISOCtryByNameIdxKey ensureByNameIdxKey(ICFSecISOCtryByNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffISOCtryByNameIdxKey) {
+			return( (CFSecBuffISOCtryByNameIdxKey)key );
+		}
+		else {
+			CFSecBuffISOCtryByNameIdxKey mapped = new CFSecBuffISOCtryByNameIdxKey();
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecISOCtry newRec() {
 		ICFSecISOCtry rec =
@@ -85,10 +131,38 @@ public class CFSecBuffISOCtryDefaultFactory
 		return( rec );
 	}
 
+	public CFSecBuffISOCtry ensureRec(ICFSecISOCtry rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFSecBuffISOCtry) {
+			return( (CFSecBuffISOCtry)rec );
+		}
+		else {
+			CFSecBuffISOCtry mapped = new CFSecBuffISOCtry();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecISOCtryH newHRec() {
 		ICFSecISOCtryH hrec =
 			new CFSecBuffISOCtryH();
 		return( hrec );
+	}
+
+	public CFSecBuffISOCtryH ensureHRec(ICFSecISOCtryH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFSecBuffISOCtryH) {
+			return( (CFSecBuffISOCtryH)hrec );
+		}
+		else {
+			CFSecBuffISOCtryH mapped = new CFSecBuffISOCtryH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

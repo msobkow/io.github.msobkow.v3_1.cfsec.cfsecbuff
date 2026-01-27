@@ -64,11 +64,43 @@ public class CFSecBuffTSecGrpMembDefaultFactory
 		return( hpkey );
 	}
 
+	public CFSecBuffTSecGrpMembHPKey ensureHPKey(ICFSecTSecGrpMembHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFSecBuffTSecGrpMembHPKey) {
+			return( (CFSecBuffTSecGrpMembHPKey)key );
+		}
+		else {
+			CFSecBuffTSecGrpMembHPKey mapped = new CFSecBuffTSecGrpMembHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredTSecGrpMembId( key.getRequiredTSecGrpMembId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecTSecGrpMembByTenantIdxKey newByTenantIdxKey() {
 		ICFSecTSecGrpMembByTenantIdxKey key =
 			new CFSecBuffTSecGrpMembByTenantIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffTSecGrpMembByTenantIdxKey ensureByTenantIdxKey(ICFSecTSecGrpMembByTenantIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffTSecGrpMembByTenantIdxKey) {
+			return( (CFSecBuffTSecGrpMembByTenantIdxKey)key );
+		}
+		else {
+			CFSecBuffTSecGrpMembByTenantIdxKey mapped = new CFSecBuffTSecGrpMembByTenantIdxKey();
+			mapped.setRequiredTenantId( key.getRequiredTenantId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -78,11 +110,39 @@ public class CFSecBuffTSecGrpMembDefaultFactory
 		return( key );
 	}
 
+	public CFSecBuffTSecGrpMembByGroupIdxKey ensureByGroupIdxKey(ICFSecTSecGrpMembByGroupIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffTSecGrpMembByGroupIdxKey) {
+			return( (CFSecBuffTSecGrpMembByGroupIdxKey)key );
+		}
+		else {
+			CFSecBuffTSecGrpMembByGroupIdxKey mapped = new CFSecBuffTSecGrpMembByGroupIdxKey();
+			mapped.setRequiredTSecGroupId( key.getRequiredTSecGroupId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecTSecGrpMembByUserIdxKey newByUserIdxKey() {
 		ICFSecTSecGrpMembByUserIdxKey key =
 			new CFSecBuffTSecGrpMembByUserIdxKey();
 		return( key );
+	}
+
+	public CFSecBuffTSecGrpMembByUserIdxKey ensureByUserIdxKey(ICFSecTSecGrpMembByUserIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffTSecGrpMembByUserIdxKey) {
+			return( (CFSecBuffTSecGrpMembByUserIdxKey)key );
+		}
+		else {
+			CFSecBuffTSecGrpMembByUserIdxKey mapped = new CFSecBuffTSecGrpMembByUserIdxKey();
+			mapped.setRequiredSecUserId( key.getRequiredSecUserId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -92,6 +152,22 @@ public class CFSecBuffTSecGrpMembDefaultFactory
 		return( key );
 	}
 
+	public CFSecBuffTSecGrpMembByUUserIdxKey ensureByUUserIdxKey(ICFSecTSecGrpMembByUUserIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFSecBuffTSecGrpMembByUUserIdxKey) {
+			return( (CFSecBuffTSecGrpMembByUUserIdxKey)key );
+		}
+		else {
+			CFSecBuffTSecGrpMembByUUserIdxKey mapped = new CFSecBuffTSecGrpMembByUUserIdxKey();
+			mapped.setRequiredTenantId( key.getRequiredTenantId() );
+			mapped.setRequiredTSecGroupId( key.getRequiredTSecGroupId() );
+			mapped.setRequiredSecUserId( key.getRequiredSecUserId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecTSecGrpMemb newRec() {
 		ICFSecTSecGrpMemb rec =
@@ -99,10 +175,38 @@ public class CFSecBuffTSecGrpMembDefaultFactory
 		return( rec );
 	}
 
+	public CFSecBuffTSecGrpMemb ensureRec(ICFSecTSecGrpMemb rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFSecBuffTSecGrpMemb) {
+			return( (CFSecBuffTSecGrpMemb)rec );
+		}
+		else {
+			CFSecBuffTSecGrpMemb mapped = new CFSecBuffTSecGrpMemb();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFSecTSecGrpMembH newHRec() {
 		ICFSecTSecGrpMembH hrec =
 			new CFSecBuffTSecGrpMembH();
 		return( hrec );
+	}
+
+	public CFSecBuffTSecGrpMembH ensureHRec(ICFSecTSecGrpMembH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFSecBuffTSecGrpMembH) {
+			return( (CFSecBuffTSecGrpMembH)hrec );
+		}
+		else {
+			CFSecBuffTSecGrpMembH mapped = new CFSecBuffTSecGrpMembH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }
