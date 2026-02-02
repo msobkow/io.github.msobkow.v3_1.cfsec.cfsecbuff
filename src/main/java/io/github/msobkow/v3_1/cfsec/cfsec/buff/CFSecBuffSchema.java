@@ -515,8 +515,8 @@ public class CFSecBuffSchema
 	 *
 	 *	@throws CFLibNotSupportedException thrown by client-side implementations.
 	 */
-	public long nextClusterIdGen() {
-		throw new CFLibMustOverrideException(getClass(), "nextClusterIdGen");
+	public CFLibDbKeyHash256 nextClusterIdGen() {
+		return( new CFLibDbKeyHash256(0) );
 	}
 
 	/**

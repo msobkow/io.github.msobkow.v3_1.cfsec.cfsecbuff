@@ -58,13 +58,13 @@ public class CFSecBuffTenantH
 	protected LocalDateTime createdAt = LocalDateTime.now();
 	protected CFLibDbKeyHash256 updatedByUserId = CFLibDbKeyHash256.fromHex(ICFSecTenant.S_INIT_UPDATED_BY);
 	protected LocalDateTime updatedAt = LocalDateTime.now();
-	protected long requiredClusterId;
+	protected CFLibDbKeyHash256 requiredClusterId;
 	protected String requiredTenantName;
 
     public CFSecBuffTenantH() {
             // The primary key member attributes are initialized on construction
             pkey = new CFSecBuffTenantHPKey();
-		requiredClusterId = ICFSecTenant.CLUSTERID_INIT_VALUE;
+		requiredClusterId = CFLibDbKeyHash256.fromHex( ICFSecTenant.CLUSTERID_INIT_VALUE.toString() );
 		requiredTenantName = ICFSecTenant.TENANTNAME_INIT_VALUE;
     }
 
@@ -143,12 +143,12 @@ public class CFSecBuffTenantH
     }
 
     @Override
-    public long getAuditClusterId() {
+    public CFLibDbKeyHash256 getAuditClusterId() {
         return pkey.getAuditClusterId();
     }
 
     @Override
-    public void setAuditClusterId(long auditClusterId) {
+    public void setAuditClusterId(CFLibDbKeyHash256 auditClusterId) {
         pkey.setAuditClusterId(auditClusterId);
     }
 
@@ -203,12 +203,18 @@ public class CFSecBuffTenantH
     }
 
 	@Override
-	public long getRequiredClusterId() {
+	public CFLibDbKeyHash256 getRequiredClusterId() {
 		return( requiredClusterId );
 	}
 
 	@Override
-	public void setRequiredClusterId( long value ) {
+	public void setRequiredClusterId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredClusterId",
+				1,
+				"value" );
+		}
 		requiredClusterId = value;
 	}
 
@@ -257,8 +263,20 @@ public class CFSecBuffTenantH
 			return( false );
 		}
 
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
 			if( getRequiredTenantName() != null ) {
 				if( rhs.getRequiredTenantName() != null ) {
@@ -293,8 +311,20 @@ public class CFSecBuffTenantH
 			return( false );
 		}
 
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
 			if( getRequiredTenantName() != null ) {
 				if( rhs.getRequiredTenantName() != null ) {
@@ -334,15 +364,39 @@ public class CFSecBuffTenantH
         }
         else if (obj instanceof ICFSecTenantByClusterIdxKey) {
             ICFSecTenantByClusterIdxKey rhs = (ICFSecTenantByClusterIdxKey)obj;
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
             return( true );
         }
         else if (obj instanceof ICFSecTenantByUNameIdxKey) {
             ICFSecTenantByUNameIdxKey rhs = (ICFSecTenantByUNameIdxKey)obj;
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
 			if( getRequiredTenantName() != null ) {
 				if( rhs.getRequiredTenantName() != null ) {
@@ -369,7 +423,7 @@ public class CFSecBuffTenantH
     @Override
     public int hashCode() {
         int hashCode = pkey.hashCode();
-		hashCode = hashCode + (int)( getRequiredClusterId() );
+		hashCode = hashCode + getRequiredClusterId().hashCode();
 		if( getRequiredTenantName() != null ) {
 			hashCode = hashCode + getRequiredTenantName().hashCode();
 		}
@@ -400,11 +454,19 @@ public class CFSecBuffTenantH
 				return( -1 );
 			}
 		}
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}
 			if (getRequiredTenantName() != null) {
 				if (rhs.getRequiredTenantName() != null) {
@@ -448,11 +510,19 @@ public class CFSecBuffTenantH
 				return( -1 );
 			}
 		}
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}
 			if (getRequiredTenantName() != null) {
 				if (rhs.getRequiredTenantName() != null) {
@@ -472,21 +542,37 @@ public class CFSecBuffTenantH
         }
         else if (obj instanceof ICFSecTenantByClusterIdxKey ) {
             ICFSecTenantByClusterIdxKey rhs = (ICFSecTenantByClusterIdxKey)obj;
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}
             return( 0 );
         }
         else if (obj instanceof ICFSecTenantByUNameIdxKey ) {
             ICFSecTenantByUNameIdxKey rhs = (ICFSecTenantByUNameIdxKey)obj;
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}
 			if (getRequiredTenantName() != null) {
 				if (rhs.getRequiredTenantName() != null) {
@@ -541,7 +627,7 @@ public class CFSecBuffTenantH
     public String getXmlAttrFragment() {
         String ret = pkey.getXmlAttrFragment() 
 			+ " RequiredRevision=\"" + Integer.toString( getRequiredRevision() ) + "\""
-			+ " RequiredClusterId=" + "\"" + Long.toString( getRequiredClusterId() ) + "\""
+			+ " RequiredClusterId=" + "\"" + getRequiredClusterId().toString() + "\""
 			+ " RequiredTenantName=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredTenantName() ) + "\"";
         return( ret );
     }

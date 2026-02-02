@@ -58,14 +58,14 @@ public class CFSecBuffSecGroupH
 	protected LocalDateTime createdAt = LocalDateTime.now();
 	protected CFLibDbKeyHash256 updatedByUserId = CFLibDbKeyHash256.fromHex(ICFSecSecGroup.S_INIT_UPDATED_BY);
 	protected LocalDateTime updatedAt = LocalDateTime.now();
-	protected long requiredClusterId;
+	protected CFLibDbKeyHash256 requiredClusterId;
 	protected String requiredName;
 	protected boolean requiredIsVisible;
 
     public CFSecBuffSecGroupH() {
             // The primary key member attributes are initialized on construction
             pkey = new CFSecBuffSecGroupHPKey();
-		requiredClusterId = ICFSecSecGroup.CLUSTERID_INIT_VALUE;
+		requiredClusterId = CFLibDbKeyHash256.fromHex( ICFSecSecGroup.CLUSTERID_INIT_VALUE.toString() );
 		requiredName = ICFSecSecGroup.NAME_INIT_VALUE;
 		requiredIsVisible = ICFSecSecGroup.ISVISIBLE_INIT_VALUE;
     }
@@ -145,12 +145,12 @@ public class CFSecBuffSecGroupH
     }
 
     @Override
-    public long getAuditClusterId() {
+    public CFLibDbKeyHash256 getAuditClusterId() {
         return pkey.getAuditClusterId();
     }
 
     @Override
-    public void setAuditClusterId(long auditClusterId) {
+    public void setAuditClusterId(CFLibDbKeyHash256 auditClusterId) {
         pkey.setAuditClusterId(auditClusterId);
     }
 
@@ -205,12 +205,18 @@ public class CFSecBuffSecGroupH
     }
 
 	@Override
-	public long getRequiredClusterId() {
+	public CFLibDbKeyHash256 getRequiredClusterId() {
 		return( requiredClusterId );
 	}
 
 	@Override
-	public void setRequiredClusterId( long value ) {
+	public void setRequiredClusterId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredClusterId",
+				1,
+				"value" );
+		}
 		requiredClusterId = value;
 	}
 
@@ -269,8 +275,20 @@ public class CFSecBuffSecGroupH
 			return( false );
 		}
 
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
 			if( getRequiredName() != null ) {
 				if( rhs.getRequiredName() != null ) {
@@ -308,8 +326,20 @@ public class CFSecBuffSecGroupH
 			return( false );
 		}
 
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
 			if( getRequiredName() != null ) {
 				if( rhs.getRequiredName() != null ) {
@@ -352,15 +382,39 @@ public class CFSecBuffSecGroupH
         }
         else if (obj instanceof ICFSecSecGroupByClusterIdxKey) {
             ICFSecSecGroupByClusterIdxKey rhs = (ICFSecSecGroupByClusterIdxKey)obj;
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
             return( true );
         }
         else if (obj instanceof ICFSecSecGroupByClusterVisIdxKey) {
             ICFSecSecGroupByClusterVisIdxKey rhs = (ICFSecSecGroupByClusterVisIdxKey)obj;
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
 			if( getRequiredIsVisible() != rhs.getRequiredIsVisible() ) {
 				return( false );
@@ -369,8 +423,20 @@ public class CFSecBuffSecGroupH
         }
         else if (obj instanceof ICFSecSecGroupByUNameIdxKey) {
             ICFSecSecGroupByUNameIdxKey rhs = (ICFSecSecGroupByUNameIdxKey)obj;
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
 			if( getRequiredName() != null ) {
 				if( rhs.getRequiredName() != null ) {
@@ -397,7 +463,7 @@ public class CFSecBuffSecGroupH
     @Override
     public int hashCode() {
         int hashCode = pkey.hashCode();
-		hashCode = hashCode + (int)( getRequiredClusterId() );
+		hashCode = hashCode + getRequiredClusterId().hashCode();
 		if( getRequiredName() != null ) {
 			hashCode = hashCode + getRequiredName().hashCode();
 		}
@@ -434,11 +500,19 @@ public class CFSecBuffSecGroupH
 				return( -1 );
 			}
 		}
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}
 			if (getRequiredName() != null) {
 				if (rhs.getRequiredName() != null) {
@@ -492,11 +566,19 @@ public class CFSecBuffSecGroupH
 				return( -1 );
 			}
 		}
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}
 			if (getRequiredName() != null) {
 				if (rhs.getRequiredName() != null) {
@@ -526,21 +608,37 @@ public class CFSecBuffSecGroupH
         }
         else if (obj instanceof ICFSecSecGroupByClusterIdxKey ) {
             ICFSecSecGroupByClusterIdxKey rhs = (ICFSecSecGroupByClusterIdxKey)obj;
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}
             return( 0 );
         }
         else if (obj instanceof ICFSecSecGroupByClusterVisIdxKey ) {
             ICFSecSecGroupByClusterVisIdxKey rhs = (ICFSecSecGroupByClusterVisIdxKey)obj;
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}
 			if( getRequiredIsVisible() ) {
 				if( ! rhs.getRequiredIsVisible() ) {
@@ -556,11 +654,19 @@ public class CFSecBuffSecGroupH
         }
         else if (obj instanceof ICFSecSecGroupByUNameIdxKey ) {
             ICFSecSecGroupByUNameIdxKey rhs = (ICFSecSecGroupByUNameIdxKey)obj;
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}
 			if (getRequiredName() != null) {
 				if (rhs.getRequiredName() != null) {
@@ -617,7 +723,7 @@ public class CFSecBuffSecGroupH
     public String getXmlAttrFragment() {
         String ret = pkey.getXmlAttrFragment() 
 			+ " RequiredRevision=\"" + Integer.toString( getRequiredRevision() ) + "\""
-			+ " RequiredClusterId=" + "\"" + Long.toString( getRequiredClusterId() ) + "\""
+			+ " RequiredClusterId=" + "\"" + getRequiredClusterId().toString() + "\""
 			+ " RequiredName=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredName() ) + "\""
 			+ " RequiredIsVisible=" + (( getRequiredIsVisible() ) ? "\"true\"" : "\"false\"" );
         return( ret );

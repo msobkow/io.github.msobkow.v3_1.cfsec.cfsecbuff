@@ -53,20 +53,26 @@ import io.github.msobkow.v3_1.cfsec.cfsec.*;
 public class CFSecBuffSecGroupByUNameIdxKey
 	implements ICFSecSecGroupByUNameIdxKey, Comparable<Object>, Serializable
 {
-	protected long requiredClusterId;
+	protected CFLibDbKeyHash256 requiredClusterId;
 	protected String requiredName;
 	public CFSecBuffSecGroupByUNameIdxKey() {
-		requiredClusterId = ICFSecSecGroup.CLUSTERID_INIT_VALUE;
+		requiredClusterId = CFLibDbKeyHash256.fromHex( ICFSecSecGroup.CLUSTERID_INIT_VALUE.toString() );
 		requiredName = ICFSecSecGroup.NAME_INIT_VALUE;
 	}
 
 	@Override
-	public long getRequiredClusterId() {
+	public CFLibDbKeyHash256 getRequiredClusterId() {
 		return( requiredClusterId );
 	}
 
 	@Override
-	public void setRequiredClusterId( long value ) {
+	public void setRequiredClusterId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredClusterId",
+				1,
+				"value" );
+		}
 		requiredClusterId = value;
 	}
 
@@ -101,8 +107,20 @@ public class CFSecBuffSecGroupByUNameIdxKey
 		}
 		else if( obj instanceof ICFSecSecGroupByUNameIdxKey ) {
 			ICFSecSecGroupByUNameIdxKey rhs = (ICFSecSecGroupByUNameIdxKey)obj;
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
 			if( getRequiredName() != null ) {
 				if( rhs.getRequiredName() != null ) {
@@ -123,8 +141,20 @@ public class CFSecBuffSecGroupByUNameIdxKey
 		}
 		else if( obj instanceof ICFSecSecGroup) {
 			ICFSecSecGroup rhs = (ICFSecSecGroup)obj;
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
 			if( getRequiredName() != null ) {
 				if( rhs.getRequiredName() != null ) {
@@ -151,7 +181,7 @@ public class CFSecBuffSecGroupByUNameIdxKey
 	@Override
 	public int hashCode() {
 		int hashCode = 0;
-		hashCode = hashCode + (int)( getRequiredClusterId() );
+		hashCode = hashCode + getRequiredClusterId().hashCode();
 		if( getRequiredName() != null ) {
 			hashCode = hashCode + getRequiredName().hashCode();
 		}
@@ -166,11 +196,19 @@ public class CFSecBuffSecGroupByUNameIdxKey
 		}
 		else if( obj instanceof ICFSecSecGroupByUNameIdxKey ) {
 			ICFSecSecGroupByUNameIdxKey rhs = (ICFSecSecGroupByUNameIdxKey)obj;
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}
 			if (getRequiredName() != null) {
 				if (rhs.getRequiredName() != null) {
@@ -190,11 +228,19 @@ public class CFSecBuffSecGroupByUNameIdxKey
 		}
 		else if( obj instanceof ICFSecSecGroup ) {
 			ICFSecSecGroup rhs = (ICFSecSecGroup)obj;
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}
 			if (getRequiredName() != null) {
 				if (rhs.getRequiredName() != null) {
@@ -224,7 +270,7 @@ public class CFSecBuffSecGroupByUNameIdxKey
 	@Override
 	public String getXmlAttrFragment() {
 		String ret = ""
-			+ " RequiredClusterId=" + "\"" + Long.toString( getRequiredClusterId() ) + "\""
+			+ " RequiredClusterId=" + "\"" + getRequiredClusterId().toString() + "\""
 			+ " RequiredName=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredName() ) + "\"";
 		return( ret );
 	}

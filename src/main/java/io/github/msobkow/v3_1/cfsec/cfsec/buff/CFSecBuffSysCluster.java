@@ -55,11 +55,11 @@ public class CFSecBuffSysCluster
 {
 	protected int requiredSingletonId;
 	protected int requiredRevision;
-	protected long requiredClusterId;
+	protected CFLibDbKeyHash256 requiredClusterId;
 
 	public CFSecBuffSysCluster() {
 		requiredSingletonId = ICFSecSysCluster.SINGLETONID_INIT_VALUE;
-		requiredClusterId = ICFSecSysCluster.CLUSTERID_INIT_VALUE;
+		requiredClusterId = CFLibDbKeyHash256.fromHex( ICFSecSysCluster.CLUSTERID_INIT_VALUE.toString() );
 	}
 
 	@Override
@@ -139,12 +139,12 @@ public class CFSecBuffSysCluster
 	}
 
 	@Override
-	public void setRequiredContainerCluster(long argClusterId) {
+	public void setRequiredContainerCluster(CFLibDbKeyHash256 argClusterId) {
 		requiredClusterId = argClusterId;
 	}
 
 	@Override
-	public long getRequiredClusterId() {
+	public CFLibDbKeyHash256 getRequiredClusterId() {
 		return( requiredClusterId );
 	}
 
@@ -158,15 +158,39 @@ public class CFSecBuffSysCluster
 			if( getRequiredSingletonId() != rhs.getRequiredSingletonId() ) {
 				return( false );
 			}
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
 			return( true );
 		}
 		else if( obj instanceof ICFSecSysClusterByClusterIdxKey ) {
 			ICFSecSysClusterByClusterIdxKey rhs = (ICFSecSysClusterByClusterIdxKey)obj;
-			if( getRequiredClusterId() != rhs.getRequiredClusterId() ) {
-				return( false );
+			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
+				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+					return( false );
+				}
 			}
 			return( true );
 		}
@@ -180,7 +204,7 @@ public class CFSecBuffSysCluster
 	public int hashCode() {
 		int hashCode = 0;
 		hashCode = hashCode + getRequiredSingletonId();
-		hashCode = hashCode + (int)( getRequiredClusterId() );
+		hashCode = hashCode + getRequiredClusterId().hashCode();
 		return( hashCode & 0x7fffffff );
 	}
 
@@ -199,22 +223,38 @@ public class CFSecBuffSysCluster
 			else if( getRequiredSingletonId() > rhs.getRequiredSingletonId() ) {
 				return( 1 );
 			}
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}
 			return( 0 );
 		}
 		else if( obj instanceof ICFSecSysClusterByClusterIdxKey ) {
 			ICFSecSysClusterByClusterIdxKey rhs = (ICFSecSysClusterByClusterIdxKey)obj;
 
-			if( getRequiredClusterId() < rhs.getRequiredClusterId() ) {
-				return( -1 );
+			if (getRequiredClusterId() != null) {
+				if (rhs.getRequiredClusterId() != null) {
+					cmp = getRequiredClusterId().compareTo( rhs.getRequiredClusterId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
 			}
-			else if( getRequiredClusterId() > rhs.getRequiredClusterId() ) {
-				return( 1 );
+			else if (rhs.getRequiredClusterId() != null) {
+				return( -1 );
 			}			return( 0 );
 		}
 		else {
@@ -244,7 +284,7 @@ public class CFSecBuffSysCluster
 			+ " RequiredSingletonId=" + "\"" + Integer.toString( getRequiredSingletonId() ) + "\""
 			+ " RequiredRevision=\"" + Integer.toString( getRequiredRevision() ) + "\""
 			+ " RequiredSingletonId=" + "\"" + Integer.toString( getRequiredSingletonId() ) + "\""
-			+ " RequiredClusterId=" + "\"" + Long.toString( getRequiredClusterId() ) + "\"";
+			+ " RequiredClusterId=" + "\"" + getRequiredClusterId().toString() + "\"";
 		return( ret );
 	}
 

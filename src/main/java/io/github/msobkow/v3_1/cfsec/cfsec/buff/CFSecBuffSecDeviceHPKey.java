@@ -53,7 +53,7 @@ import io.github.msobkow.v3_1.cfsec.cfsec.*;
 public class CFSecBuffSecDeviceHPKey
 	implements ICFSecSecDeviceHPKey, Comparable<Object>, Serializable
 {
-	protected long auditClusterId;
+	protected CFLibDbKeyHash256 auditClusterId;
 	protected LocalDateTime auditStamp;
 	protected short auditActionId;
 	protected int requiredRevision;
@@ -73,12 +73,12 @@ public class CFSecBuffSecDeviceHPKey
 	}
 
 	@Override
-	public long getAuditClusterId() {
+	public CFLibDbKeyHash256 getAuditClusterId() {
 		return( auditClusterId );
 	}
 
 	@Override
-	public void setAuditClusterId( long value ) {
+	public void setAuditClusterId( CFLibDbKeyHash256 value ) {
 		auditClusterId = value;
 	}
 
@@ -203,7 +203,17 @@ public class CFSecBuffSecDeviceHPKey
 		}
 		else if (obj instanceof ICFSecSecDeviceHPKey) {
 			ICFSecSecDeviceHPKey rhs = (ICFSecSecDeviceHPKey)obj;
-			if (getAuditClusterId() != rhs.getAuditClusterId()) {
+			if (getAuditClusterId() != null) {
+				if (rhs.getAuditClusterId() != null) {
+					if ( ! getAuditClusterId().equals(rhs.getAuditClusterId())) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else if (rhs.getAuditClusterId() != null) {
 				return( false );
 			}
 			if (getAuditStamp() != null) {
@@ -272,7 +282,17 @@ public class CFSecBuffSecDeviceHPKey
 		}
 		else if (obj instanceof ICFSecSecDeviceH) {
 			ICFSecSecDeviceH rhs = (ICFSecSecDeviceH)obj;
-			if (getAuditClusterId() != rhs.getAuditClusterId()) {
+			if (getAuditClusterId() != null) {
+				if (rhs.getAuditClusterId() != null) {
+					if ( ! getAuditClusterId().equals(rhs.getAuditClusterId())) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else if (rhs.getAuditClusterId() != null) {
 				return( false );
 			}
 			if (getAuditStamp() != null) {
@@ -347,7 +367,9 @@ public class CFSecBuffSecDeviceHPKey
 	@Override
 	public int hashCode() {
 		int hashCode = 0;
-		hashCode = hashCode + (int)( auditClusterId ) & 0x7fffffff;
+		if( auditClusterId != null ) {
+			hashCode = hashCode + auditClusterId.hashCode();
+		}
 		if( auditStamp != null ) {
 			hashCode = hashCode + auditStamp.hashCode();
 		}
@@ -403,11 +425,19 @@ public class CFSecBuffSecDeviceHPKey
 		}
 		else if (obj instanceof ICFSecSecDeviceHPKey) {
 			ICFSecSecDeviceHPKey rhs = (ICFSecSecDeviceHPKey)obj;
-			if (getAuditClusterId() < rhs.getAuditClusterId()) {
-				return( -1 );
+			if( getAuditClusterId() == null ) {
+				if( rhs.getAuditClusterId() != null ) {
+					return( -1 );
+				}
 			}
-			else if (getAuditClusterId() > rhs.getAuditClusterId()) {
+			else if( rhs.getAuditClusterId() == null ) {
 				return( 1 );
+			}
+			else {
+				cmp = getAuditClusterId().compareTo( rhs.getAuditClusterId() );
+				if( cmp != 0 ) {
+					return( cmp );
+				}
 			}
 			if( getAuditStamp() == null ) {
 				if( rhs.getAuditStamp() != null ) {
@@ -481,11 +511,19 @@ public class CFSecBuffSecDeviceHPKey
 		}
 		else if (obj instanceof ICFSecSecDeviceH) {
 			ICFSecSecDeviceH rhs = (ICFSecSecDeviceH)obj;
-			if (getAuditClusterId() < rhs.getAuditClusterId()) {
-				return( -1 );
+			if( getAuditClusterId() == null ) {
+				if( rhs.getAuditClusterId() != null ) {
+					return( -1 );
+				}
 			}
-			else if (getAuditClusterId() > rhs.getAuditClusterId()) {
+			else if( rhs.getAuditClusterId() == null ) {
 				return( 1 );
+			}
+			else {
+				cmp = getAuditClusterId().compareTo( rhs.getAuditClusterId() );
+				if( cmp != 0 ) {
+					return( cmp );
+				}
 			}
 			if( getAuditStamp() == null ) {
 				if( rhs.getAuditStamp() != null ) {
@@ -568,7 +606,7 @@ public class CFSecBuffSecDeviceHPKey
 
 	@Override
 	public String getXmlAttrFragment() {
-		String ret = " auditClusterId=\"" + auditClusterId + "\""
+		String ret = " auditClusterId=\"" + (auditClusterId != null ? auditClusterId.toString() : "null") + "\""
 			+ " auditStamp=\"" + (auditStamp != null ? CFLibXmlUtil.formatTimestamp(auditStamp) : "null") + "\""
 			+ " auditAction=\"" + auditActionId + "\""
 			+ " revision=\"" + requiredRevision + "\""
