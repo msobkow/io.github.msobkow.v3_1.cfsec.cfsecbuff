@@ -81,8 +81,8 @@ public class CFSecBuffSecGrpIncByIncludeIdxKey
 		}
 		else if( obj instanceof ICFSecSecGrpIncByIncludeIdxKey ) {
 			ICFSecSecGrpIncByIncludeIdxKey rhs = (ICFSecSecGrpIncByIncludeIdxKey)obj;
-			if( getRequiredIncludeGroupId() != null && !getRequiredIncludeGroupId().isNull() ) {
-				if( rhs.getRequiredIncludeGroupId() != null && !rhs.getRequiredIncludeGroupId().isNull() ) {
+			if( getRequiredIncludeGroupId() != null ) {
+				if( rhs.getRequiredIncludeGroupId() != null ) {
 					if( ! getRequiredIncludeGroupId().equals( rhs.getRequiredIncludeGroupId() ) ) {
 						return( false );
 					}
@@ -92,7 +92,7 @@ public class CFSecBuffSecGrpIncByIncludeIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredIncludeGroupId() != null && !getRequiredIncludeGroupId().isNull()) {
+				if( rhs.getRequiredIncludeGroupId() != null ) {
 					return( false );
 				}
 			}
@@ -100,8 +100,8 @@ public class CFSecBuffSecGrpIncByIncludeIdxKey
 		}
 		else if( obj instanceof ICFSecSecGrpInc) {
 			ICFSecSecGrpInc rhs = (ICFSecSecGrpInc)obj;
-			if( getRequiredIncludeGroupId() != null && !getRequiredIncludeGroupId().isNull() ) {
-				if( rhs.getRequiredIncludeGroupId() != null && !rhs.getRequiredIncludeGroupId().isNull() ) {
+			if( getRequiredIncludeGroupId() != null ) {
+				if( rhs.getRequiredIncludeGroupId() != null ) {
 					if( ! getRequiredIncludeGroupId().equals( rhs.getRequiredIncludeGroupId() ) ) {
 						return( false );
 					}
@@ -111,7 +111,7 @@ public class CFSecBuffSecGrpIncByIncludeIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredIncludeGroupId() != null && !getRequiredIncludeGroupId().isNull()) {
+				if( rhs.getRequiredIncludeGroupId() != null ) {
 					return( false );
 				}
 			}

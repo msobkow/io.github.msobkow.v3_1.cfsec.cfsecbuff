@@ -214,8 +214,8 @@ public class CFSecBuffServiceType
 			if( ! getUpdatedAt().equals( rhs.getUpdatedAt() ) ) {
 				return( false );
 			}
-			if( getRequiredServiceTypeId() != null && !getRequiredServiceTypeId().isNull() ) {
-				if( rhs.getRequiredServiceTypeId() != null && !rhs.getRequiredServiceTypeId().isNull() ) {
+			if( getRequiredServiceTypeId() != null ) {
+				if( rhs.getRequiredServiceTypeId() != null ) {
 					if( ! getRequiredServiceTypeId().equals( rhs.getRequiredServiceTypeId() ) ) {
 						return( false );
 					}
@@ -225,7 +225,7 @@ public class CFSecBuffServiceType
 				}
 			}
 			else {
-				if( rhs.getRequiredServiceTypeId() != null && !getRequiredServiceTypeId().isNull()) {
+				if( rhs.getRequiredServiceTypeId() != null ) {
 					return( false );
 				}
 			}
@@ -248,8 +248,8 @@ public class CFSecBuffServiceType
 		}
 		else if( obj instanceof ICFSecServiceTypeH ) {
 			ICFSecServiceTypeH rhs = (ICFSecServiceTypeH)obj;
-			if( getRequiredServiceTypeId() != null && !getRequiredServiceTypeId().isNull() ) {
-				if( rhs.getRequiredServiceTypeId() != null && !rhs.getRequiredServiceTypeId().isNull() ) {
+			if( getRequiredServiceTypeId() != null ) {
+				if( rhs.getRequiredServiceTypeId() != null ) {
 					if( ! getRequiredServiceTypeId().equals( rhs.getRequiredServiceTypeId() ) ) {
 						return( false );
 					}
@@ -259,7 +259,7 @@ public class CFSecBuffServiceType
 				}
 			}
 			else {
-				if( rhs.getRequiredServiceTypeId() != null && !getRequiredServiceTypeId().isNull()) {
+				if( rhs.getRequiredServiceTypeId() != null ) {
 					return( false );
 				}
 			}
@@ -282,8 +282,8 @@ public class CFSecBuffServiceType
 		}
 		else if( obj instanceof ICFSecServiceTypeHPKey ) {
 			ICFSecServiceTypeHPKey rhs = (ICFSecServiceTypeHPKey)obj;
-			if( getRequiredServiceTypeId() != null && !getRequiredServiceTypeId().isNull() ) {
-				if( rhs.getRequiredServiceTypeId() != null && !rhs.getRequiredServiceTypeId().isNull() ) {
+			if( getRequiredServiceTypeId() != null ) {
+				if( rhs.getRequiredServiceTypeId() != null ) {
 					if( ! getRequiredServiceTypeId().equals( rhs.getRequiredServiceTypeId() ) ) {
 						return( false );
 					}
@@ -293,7 +293,7 @@ public class CFSecBuffServiceType
 				}
 			}
 			else {
-				if( rhs.getRequiredServiceTypeId() != null && !getRequiredServiceTypeId().isNull()) {
+				if( rhs.getRequiredServiceTypeId() != null ) {
 					return( false );
 				}
 			}

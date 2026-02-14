@@ -183,8 +183,8 @@ public class CFSecBuffSecDevice
 			if( ! getUpdatedAt().equals( rhs.getUpdatedAt() ) ) {
 				return( false );
 			}
-			if( getRequiredSecUserId() != null && !getRequiredSecUserId().isNull() ) {
-				if( rhs.getRequiredSecUserId() != null && !rhs.getRequiredSecUserId().isNull() ) {
+			if( getRequiredSecUserId() != null ) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					if( ! getRequiredSecUserId().equals( rhs.getRequiredSecUserId() ) ) {
 						return( false );
 					}
@@ -194,7 +194,7 @@ public class CFSecBuffSecDevice
 				}
 			}
 			else {
-				if( rhs.getRequiredSecUserId() != null && !getRequiredSecUserId().isNull()) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					return( false );
 				}
 			}
@@ -217,8 +217,8 @@ public class CFSecBuffSecDevice
 		}
 		else if( obj instanceof ICFSecSecDeviceH ) {
 			ICFSecSecDeviceH rhs = (ICFSecSecDeviceH)obj;
-			if( getRequiredSecUserId() != null && !getRequiredSecUserId().isNull() ) {
-				if( rhs.getRequiredSecUserId() != null && !rhs.getRequiredSecUserId().isNull() ) {
+			if( getRequiredSecUserId() != null ) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					if( ! getRequiredSecUserId().equals( rhs.getRequiredSecUserId() ) ) {
 						return( false );
 					}
@@ -228,7 +228,7 @@ public class CFSecBuffSecDevice
 				}
 			}
 			else {
-				if( rhs.getRequiredSecUserId() != null && !getRequiredSecUserId().isNull()) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					return( false );
 				}
 			}
@@ -251,8 +251,8 @@ public class CFSecBuffSecDevice
 		}
 		else if( obj instanceof ICFSecSecDeviceHPKey ) {
 			ICFSecSecDeviceHPKey rhs = (ICFSecSecDeviceHPKey)obj;
-			if( getRequiredSecUserId() != null && !getRequiredSecUserId().isNull() ) {
-				if( rhs.getRequiredSecUserId() != null && !rhs.getRequiredSecUserId().isNull() ) {
+			if( getRequiredSecUserId() != null ) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					if( ! getRequiredSecUserId().equals( rhs.getRequiredSecUserId() ) ) {
 						return( false );
 					}
@@ -262,7 +262,7 @@ public class CFSecBuffSecDevice
 				}
 			}
 			else {
-				if( rhs.getRequiredSecUserId() != null && !getRequiredSecUserId().isNull()) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					return( false );
 				}
 			}
@@ -285,8 +285,8 @@ public class CFSecBuffSecDevice
 		}
 		else if( obj instanceof ICFSecSecDeviceByNameIdxKey ) {
 			ICFSecSecDeviceByNameIdxKey rhs = (ICFSecSecDeviceByNameIdxKey)obj;
-			if( getRequiredSecUserId() != null && !getRequiredSecUserId().isNull() ) {
-				if( rhs.getRequiredSecUserId() != null && !rhs.getRequiredSecUserId().isNull() ) {
+			if( getRequiredSecUserId() != null ) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					if( ! getRequiredSecUserId().equals( rhs.getRequiredSecUserId() ) ) {
 						return( false );
 					}
@@ -296,7 +296,7 @@ public class CFSecBuffSecDevice
 				}
 			}
 			else {
-				if( rhs.getRequiredSecUserId() != null && !getRequiredSecUserId().isNull()) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					return( false );
 				}
 			}
@@ -319,8 +319,8 @@ public class CFSecBuffSecDevice
 		}
 		else if( obj instanceof ICFSecSecDeviceByUserIdxKey ) {
 			ICFSecSecDeviceByUserIdxKey rhs = (ICFSecSecDeviceByUserIdxKey)obj;
-			if( getRequiredSecUserId() != null && !getRequiredSecUserId().isNull() ) {
-				if( rhs.getRequiredSecUserId() != null && !rhs.getRequiredSecUserId().isNull() ) {
+			if( getRequiredSecUserId() != null ) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					if( ! getRequiredSecUserId().equals( rhs.getRequiredSecUserId() ) ) {
 						return( false );
 					}
@@ -330,7 +330,7 @@ public class CFSecBuffSecDevice
 				}
 			}
 			else {
-				if( rhs.getRequiredSecUserId() != null && !getRequiredSecUserId().isNull()) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					return( false );
 				}
 			}

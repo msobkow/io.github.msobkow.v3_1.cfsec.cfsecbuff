@@ -117,8 +117,8 @@ public class CFSecBuffTSecGrpMembByUUserIdxKey
 		}
 		else if( obj instanceof ICFSecTSecGrpMembByUUserIdxKey ) {
 			ICFSecTSecGrpMembByUUserIdxKey rhs = (ICFSecTSecGrpMembByUUserIdxKey)obj;
-			if( getRequiredTenantId() != null && !getRequiredTenantId().isNull() ) {
-				if( rhs.getRequiredTenantId() != null && !rhs.getRequiredTenantId().isNull() ) {
+			if( getRequiredTenantId() != null ) {
+				if( rhs.getRequiredTenantId() != null ) {
 					if( ! getRequiredTenantId().equals( rhs.getRequiredTenantId() ) ) {
 						return( false );
 					}
@@ -128,12 +128,12 @@ public class CFSecBuffTSecGrpMembByUUserIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredTenantId() != null && !getRequiredTenantId().isNull()) {
+				if( rhs.getRequiredTenantId() != null ) {
 					return( false );
 				}
 			}
-			if( getRequiredTSecGroupId() != null && !getRequiredTSecGroupId().isNull() ) {
-				if( rhs.getRequiredTSecGroupId() != null && !rhs.getRequiredTSecGroupId().isNull() ) {
+			if( getRequiredTSecGroupId() != null ) {
+				if( rhs.getRequiredTSecGroupId() != null ) {
 					if( ! getRequiredTSecGroupId().equals( rhs.getRequiredTSecGroupId() ) ) {
 						return( false );
 					}
@@ -143,12 +143,12 @@ public class CFSecBuffTSecGrpMembByUUserIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredTSecGroupId() != null && !getRequiredTSecGroupId().isNull()) {
+				if( rhs.getRequiredTSecGroupId() != null ) {
 					return( false );
 				}
 			}
-			if( getRequiredSecUserId() != null && !getRequiredSecUserId().isNull() ) {
-				if( rhs.getRequiredSecUserId() != null && !rhs.getRequiredSecUserId().isNull() ) {
+			if( getRequiredSecUserId() != null ) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					if( ! getRequiredSecUserId().equals( rhs.getRequiredSecUserId() ) ) {
 						return( false );
 					}
@@ -158,7 +158,7 @@ public class CFSecBuffTSecGrpMembByUUserIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredSecUserId() != null && !getRequiredSecUserId().isNull()) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					return( false );
 				}
 			}
@@ -166,8 +166,8 @@ public class CFSecBuffTSecGrpMembByUUserIdxKey
 		}
 		else if( obj instanceof ICFSecTSecGrpMemb) {
 			ICFSecTSecGrpMemb rhs = (ICFSecTSecGrpMemb)obj;
-			if( getRequiredTenantId() != null && !getRequiredTenantId().isNull() ) {
-				if( rhs.getRequiredTenantId() != null && !rhs.getRequiredTenantId().isNull() ) {
+			if( getRequiredTenantId() != null ) {
+				if( rhs.getRequiredTenantId() != null ) {
 					if( ! getRequiredTenantId().equals( rhs.getRequiredTenantId() ) ) {
 						return( false );
 					}
@@ -177,12 +177,12 @@ public class CFSecBuffTSecGrpMembByUUserIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredTenantId() != null && !getRequiredTenantId().isNull()) {
+				if( rhs.getRequiredTenantId() != null ) {
 					return( false );
 				}
 			}
-			if( getRequiredTSecGroupId() != null && !getRequiredTSecGroupId().isNull() ) {
-				if( rhs.getRequiredTSecGroupId() != null && !rhs.getRequiredTSecGroupId().isNull() ) {
+			if( getRequiredTSecGroupId() != null ) {
+				if( rhs.getRequiredTSecGroupId() != null ) {
 					if( ! getRequiredTSecGroupId().equals( rhs.getRequiredTSecGroupId() ) ) {
 						return( false );
 					}
@@ -192,12 +192,12 @@ public class CFSecBuffTSecGrpMembByUUserIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredTSecGroupId() != null && !getRequiredTSecGroupId().isNull()) {
+				if( rhs.getRequiredTSecGroupId() != null ) {
 					return( false );
 				}
 			}
-			if( getRequiredSecUserId() != null && !getRequiredSecUserId().isNull() ) {
-				if( rhs.getRequiredSecUserId() != null && !rhs.getRequiredSecUserId().isNull() ) {
+			if( getRequiredSecUserId() != null ) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					if( ! getRequiredSecUserId().equals( rhs.getRequiredSecUserId() ) ) {
 						return( false );
 					}
@@ -207,7 +207,7 @@ public class CFSecBuffTSecGrpMembByUUserIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredSecUserId() != null && !getRequiredSecUserId().isNull()) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					return( false );
 				}
 			}

@@ -81,8 +81,8 @@ public class CFSecBuffServiceByClusterIdxKey
 		}
 		else if( obj instanceof ICFSecServiceByClusterIdxKey ) {
 			ICFSecServiceByClusterIdxKey rhs = (ICFSecServiceByClusterIdxKey)obj;
-			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
-				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+			if( getRequiredClusterId() != null ) {
+				if( rhs.getRequiredClusterId() != null ) {
 					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
 						return( false );
 					}
@@ -92,7 +92,7 @@ public class CFSecBuffServiceByClusterIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+				if( rhs.getRequiredClusterId() != null ) {
 					return( false );
 				}
 			}
@@ -100,8 +100,8 @@ public class CFSecBuffServiceByClusterIdxKey
 		}
 		else if( obj instanceof ICFSecService) {
 			ICFSecService rhs = (ICFSecService)obj;
-			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
-				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+			if( getRequiredClusterId() != null ) {
+				if( rhs.getRequiredClusterId() != null ) {
 					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
 						return( false );
 					}
@@ -111,7 +111,7 @@ public class CFSecBuffServiceByClusterIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+				if( rhs.getRequiredClusterId() != null ) {
 					return( false );
 				}
 			}

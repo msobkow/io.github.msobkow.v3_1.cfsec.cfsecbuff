@@ -81,8 +81,8 @@ public class CFSecBuffTSecGrpMembByTenantIdxKey
 		}
 		else if( obj instanceof ICFSecTSecGrpMembByTenantIdxKey ) {
 			ICFSecTSecGrpMembByTenantIdxKey rhs = (ICFSecTSecGrpMembByTenantIdxKey)obj;
-			if( getRequiredTenantId() != null && !getRequiredTenantId().isNull() ) {
-				if( rhs.getRequiredTenantId() != null && !rhs.getRequiredTenantId().isNull() ) {
+			if( getRequiredTenantId() != null ) {
+				if( rhs.getRequiredTenantId() != null ) {
 					if( ! getRequiredTenantId().equals( rhs.getRequiredTenantId() ) ) {
 						return( false );
 					}
@@ -92,7 +92,7 @@ public class CFSecBuffTSecGrpMembByTenantIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredTenantId() != null && !getRequiredTenantId().isNull()) {
+				if( rhs.getRequiredTenantId() != null ) {
 					return( false );
 				}
 			}
@@ -100,8 +100,8 @@ public class CFSecBuffTSecGrpMembByTenantIdxKey
 		}
 		else if( obj instanceof ICFSecTSecGrpMemb) {
 			ICFSecTSecGrpMemb rhs = (ICFSecTSecGrpMemb)obj;
-			if( getRequiredTenantId() != null && !getRequiredTenantId().isNull() ) {
-				if( rhs.getRequiredTenantId() != null && !rhs.getRequiredTenantId().isNull() ) {
+			if( getRequiredTenantId() != null ) {
+				if( rhs.getRequiredTenantId() != null ) {
 					if( ! getRequiredTenantId().equals( rhs.getRequiredTenantId() ) ) {
 						return( false );
 					}
@@ -111,7 +111,7 @@ public class CFSecBuffTSecGrpMembByTenantIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredTenantId() != null && !getRequiredTenantId().isNull()) {
+				if( rhs.getRequiredTenantId() != null ) {
 					return( false );
 				}
 			}

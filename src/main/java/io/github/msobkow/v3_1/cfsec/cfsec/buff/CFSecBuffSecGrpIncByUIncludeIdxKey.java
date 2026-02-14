@@ -117,8 +117,8 @@ public class CFSecBuffSecGrpIncByUIncludeIdxKey
 		}
 		else if( obj instanceof ICFSecSecGrpIncByUIncludeIdxKey ) {
 			ICFSecSecGrpIncByUIncludeIdxKey rhs = (ICFSecSecGrpIncByUIncludeIdxKey)obj;
-			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
-				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+			if( getRequiredClusterId() != null ) {
+				if( rhs.getRequiredClusterId() != null ) {
 					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
 						return( false );
 					}
@@ -128,12 +128,12 @@ public class CFSecBuffSecGrpIncByUIncludeIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+				if( rhs.getRequiredClusterId() != null ) {
 					return( false );
 				}
 			}
-			if( getRequiredSecGroupId() != null && !getRequiredSecGroupId().isNull() ) {
-				if( rhs.getRequiredSecGroupId() != null && !rhs.getRequiredSecGroupId().isNull() ) {
+			if( getRequiredSecGroupId() != null ) {
+				if( rhs.getRequiredSecGroupId() != null ) {
 					if( ! getRequiredSecGroupId().equals( rhs.getRequiredSecGroupId() ) ) {
 						return( false );
 					}
@@ -143,12 +143,12 @@ public class CFSecBuffSecGrpIncByUIncludeIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredSecGroupId() != null && !getRequiredSecGroupId().isNull()) {
+				if( rhs.getRequiredSecGroupId() != null ) {
 					return( false );
 				}
 			}
-			if( getRequiredIncludeGroupId() != null && !getRequiredIncludeGroupId().isNull() ) {
-				if( rhs.getRequiredIncludeGroupId() != null && !rhs.getRequiredIncludeGroupId().isNull() ) {
+			if( getRequiredIncludeGroupId() != null ) {
+				if( rhs.getRequiredIncludeGroupId() != null ) {
 					if( ! getRequiredIncludeGroupId().equals( rhs.getRequiredIncludeGroupId() ) ) {
 						return( false );
 					}
@@ -158,7 +158,7 @@ public class CFSecBuffSecGrpIncByUIncludeIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredIncludeGroupId() != null && !getRequiredIncludeGroupId().isNull()) {
+				if( rhs.getRequiredIncludeGroupId() != null ) {
 					return( false );
 				}
 			}
@@ -166,8 +166,8 @@ public class CFSecBuffSecGrpIncByUIncludeIdxKey
 		}
 		else if( obj instanceof ICFSecSecGrpInc) {
 			ICFSecSecGrpInc rhs = (ICFSecSecGrpInc)obj;
-			if( getRequiredClusterId() != null && !getRequiredClusterId().isNull() ) {
-				if( rhs.getRequiredClusterId() != null && !rhs.getRequiredClusterId().isNull() ) {
+			if( getRequiredClusterId() != null ) {
+				if( rhs.getRequiredClusterId() != null ) {
 					if( ! getRequiredClusterId().equals( rhs.getRequiredClusterId() ) ) {
 						return( false );
 					}
@@ -177,12 +177,12 @@ public class CFSecBuffSecGrpIncByUIncludeIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredClusterId() != null && !getRequiredClusterId().isNull()) {
+				if( rhs.getRequiredClusterId() != null ) {
 					return( false );
 				}
 			}
-			if( getRequiredSecGroupId() != null && !getRequiredSecGroupId().isNull() ) {
-				if( rhs.getRequiredSecGroupId() != null && !rhs.getRequiredSecGroupId().isNull() ) {
+			if( getRequiredSecGroupId() != null ) {
+				if( rhs.getRequiredSecGroupId() != null ) {
 					if( ! getRequiredSecGroupId().equals( rhs.getRequiredSecGroupId() ) ) {
 						return( false );
 					}
@@ -192,12 +192,12 @@ public class CFSecBuffSecGrpIncByUIncludeIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredSecGroupId() != null && !getRequiredSecGroupId().isNull()) {
+				if( rhs.getRequiredSecGroupId() != null ) {
 					return( false );
 				}
 			}
-			if( getRequiredIncludeGroupId() != null && !getRequiredIncludeGroupId().isNull() ) {
-				if( rhs.getRequiredIncludeGroupId() != null && !rhs.getRequiredIncludeGroupId().isNull() ) {
+			if( getRequiredIncludeGroupId() != null ) {
+				if( rhs.getRequiredIncludeGroupId() != null ) {
 					if( ! getRequiredIncludeGroupId().equals( rhs.getRequiredIncludeGroupId() ) ) {
 						return( false );
 					}
@@ -207,7 +207,7 @@ public class CFSecBuffSecGrpIncByUIncludeIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredIncludeGroupId() != null && !getRequiredIncludeGroupId().isNull()) {
+				if( rhs.getRequiredIncludeGroupId() != null ) {
 					return( false );
 				}
 			}

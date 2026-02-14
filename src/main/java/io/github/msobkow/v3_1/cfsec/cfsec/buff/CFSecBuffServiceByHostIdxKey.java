@@ -81,8 +81,8 @@ public class CFSecBuffServiceByHostIdxKey
 		}
 		else if( obj instanceof ICFSecServiceByHostIdxKey ) {
 			ICFSecServiceByHostIdxKey rhs = (ICFSecServiceByHostIdxKey)obj;
-			if( getRequiredHostNodeId() != null && !getRequiredHostNodeId().isNull() ) {
-				if( rhs.getRequiredHostNodeId() != null && !rhs.getRequiredHostNodeId().isNull() ) {
+			if( getRequiredHostNodeId() != null ) {
+				if( rhs.getRequiredHostNodeId() != null ) {
 					if( ! getRequiredHostNodeId().equals( rhs.getRequiredHostNodeId() ) ) {
 						return( false );
 					}
@@ -92,7 +92,7 @@ public class CFSecBuffServiceByHostIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredHostNodeId() != null && !getRequiredHostNodeId().isNull()) {
+				if( rhs.getRequiredHostNodeId() != null ) {
 					return( false );
 				}
 			}
@@ -100,8 +100,8 @@ public class CFSecBuffServiceByHostIdxKey
 		}
 		else if( obj instanceof ICFSecService) {
 			ICFSecService rhs = (ICFSecService)obj;
-			if( getRequiredHostNodeId() != null && !getRequiredHostNodeId().isNull() ) {
-				if( rhs.getRequiredHostNodeId() != null && !rhs.getRequiredHostNodeId().isNull() ) {
+			if( getRequiredHostNodeId() != null ) {
+				if( rhs.getRequiredHostNodeId() != null ) {
 					if( ! getRequiredHostNodeId().equals( rhs.getRequiredHostNodeId() ) ) {
 						return( false );
 					}
@@ -111,7 +111,7 @@ public class CFSecBuffServiceByHostIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredHostNodeId() != null && !getRequiredHostNodeId().isNull()) {
+				if( rhs.getRequiredHostNodeId() != null ) {
 					return( false );
 				}
 			}

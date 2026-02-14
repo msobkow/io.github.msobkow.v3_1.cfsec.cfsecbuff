@@ -142,8 +142,8 @@ public class CFSecBuffServiceHPKey
 		}
 		else if (obj instanceof ICFSecService) {
 			ICFSecService rhs = (ICFSecService)obj;
-			if( getRequiredServiceId() != null && !getRequiredServiceId().isNull() ) {
-				if( rhs.getRequiredServiceId() != null && !rhs.getRequiredServiceId().isNull() ) {
+			if( getRequiredServiceId() != null ) {
+				if( rhs.getRequiredServiceId() != null ) {
 					if( ! getRequiredServiceId().equals( rhs.getRequiredServiceId() ) ) {
 						return( false );
 					}
@@ -153,7 +153,7 @@ public class CFSecBuffServiceHPKey
 				}
 			}
 			else {
-				if( rhs.getRequiredServiceId() != null && !getRequiredServiceId().isNull()) {
+				if( rhs.getRequiredServiceId() != null ) {
 					return( false );
 				}
 			}
@@ -206,8 +206,8 @@ public class CFSecBuffServiceHPKey
 			else if (rhs.getAuditSessionId() != null && !rhs.getAuditSessionId().isNull() ) {
 				return( false );
 			}
-			if( getRequiredServiceId() != null && !getRequiredServiceId().isNull() ) {
-				if( rhs.getRequiredServiceId() != null && !rhs.getRequiredServiceId().isNull() ) {
+			if( getRequiredServiceId() != null ) {
+				if( rhs.getRequiredServiceId() != null ) {
 					if( ! getRequiredServiceId().equals( rhs.getRequiredServiceId() ) ) {
 						return( false );
 					}
@@ -217,7 +217,7 @@ public class CFSecBuffServiceHPKey
 				}
 			}
 			else {
-				if( rhs.getRequiredServiceId() != null && !getRequiredServiceId().isNull()) {
+				if( rhs.getRequiredServiceId() != null ) {
 					return( false );
 				}
 			}
@@ -270,8 +270,8 @@ public class CFSecBuffServiceHPKey
 			else if (rhs.getAuditSessionId() != null && !rhs.getAuditSessionId().isNull() ) {
 				return( false );
 			}
-			if( getRequiredServiceId() != null && !getRequiredServiceId().isNull() ) {
-				if( rhs.getRequiredServiceId() != null && !rhs.getRequiredServiceId().isNull() ) {
+			if( getRequiredServiceId() != null ) {
+				if( rhs.getRequiredServiceId() != null ) {
 					if( ! getRequiredServiceId().equals( rhs.getRequiredServiceId() ) ) {
 						return( false );
 					}
@@ -281,7 +281,7 @@ public class CFSecBuffServiceHPKey
 				}
 			}
 			else {
-				if( rhs.getRequiredServiceId() != null && !getRequiredServiceId().isNull()) {
+				if( rhs.getRequiredServiceId() != null ) {
 					return( false );
 				}
 			}

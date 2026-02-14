@@ -230,8 +230,8 @@ public class CFSecBuffSecSession
 		}
 		else if( obj instanceof ICFSecSecSession ) {
 			ICFSecSecSession rhs = (ICFSecSecSession)obj;
-			if( getRequiredSecSessionId() != null && !getRequiredSecSessionId().isNull() ) {
-				if( rhs.getRequiredSecSessionId() != null && !rhs.getRequiredSecSessionId().isNull() ) {
+			if( getRequiredSecSessionId() != null ) {
+				if( rhs.getRequiredSecSessionId() != null ) {
 					if( ! getRequiredSecSessionId().equals( rhs.getRequiredSecSessionId() ) ) {
 						return( false );
 					}
@@ -241,12 +241,12 @@ public class CFSecBuffSecSession
 				}
 			}
 			else {
-				if( rhs.getRequiredSecSessionId() != null && !getRequiredSecSessionId().isNull()) {
+				if( rhs.getRequiredSecSessionId() != null ) {
 					return( false );
 				}
 			}
-			if( getRequiredSecUserId() != null && !getRequiredSecUserId().isNull() ) {
-				if( rhs.getRequiredSecUserId() != null && !rhs.getRequiredSecUserId().isNull() ) {
+			if( getRequiredSecUserId() != null ) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					if( ! getRequiredSecUserId().equals( rhs.getRequiredSecUserId() ) ) {
 						return( false );
 					}
@@ -256,7 +256,7 @@ public class CFSecBuffSecSession
 				}
 			}
 			else {
-				if( rhs.getRequiredSecUserId() != null && !getRequiredSecUserId().isNull()) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					return( false );
 				}
 			}
@@ -305,8 +305,8 @@ public class CFSecBuffSecSession
 					return( false );
 				}
 			}
-			if( getOptionalSecProxyId() != null && !getOptionalSecProxyId().isNull() ) {
-				if( rhs.getOptionalSecProxyId() != null && !rhs.getOptionalSecProxyId().isNull() ) {
+			if( getOptionalSecProxyId() != null ) {
+				if( rhs.getOptionalSecProxyId() != null ) {
 					if( ! getOptionalSecProxyId().equals( rhs.getOptionalSecProxyId() ) ) {
 						return( false );
 					}
@@ -316,7 +316,7 @@ public class CFSecBuffSecSession
 				}
 			}
 			else {
-				if( rhs.getOptionalSecProxyId() != null && !getOptionalSecProxyId().isNull()) {
+				if( rhs.getOptionalSecProxyId() != null ) {
 					return( false );
 				}
 			}
@@ -324,8 +324,8 @@ public class CFSecBuffSecSession
 		}
 		else if( obj instanceof ICFSecSecSessionBySecUserIdxKey ) {
 			ICFSecSecSessionBySecUserIdxKey rhs = (ICFSecSecSessionBySecUserIdxKey)obj;
-			if( getRequiredSecUserId() != null && !getRequiredSecUserId().isNull() ) {
-				if( rhs.getRequiredSecUserId() != null && !rhs.getRequiredSecUserId().isNull() ) {
+			if( getRequiredSecUserId() != null ) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					if( ! getRequiredSecUserId().equals( rhs.getRequiredSecUserId() ) ) {
 						return( false );
 					}
@@ -335,7 +335,7 @@ public class CFSecBuffSecSession
 				}
 			}
 			else {
-				if( rhs.getRequiredSecUserId() != null && !getRequiredSecUserId().isNull()) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					return( false );
 				}
 			}
@@ -343,8 +343,8 @@ public class CFSecBuffSecSession
 		}
 		else if( obj instanceof ICFSecSecSessionBySecDevIdxKey ) {
 			ICFSecSecSessionBySecDevIdxKey rhs = (ICFSecSecSessionBySecDevIdxKey)obj;
-			if( getRequiredSecUserId() != null && !getRequiredSecUserId().isNull() ) {
-				if( rhs.getRequiredSecUserId() != null && !rhs.getRequiredSecUserId().isNull() ) {
+			if( getRequiredSecUserId() != null ) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					if( ! getRequiredSecUserId().equals( rhs.getRequiredSecUserId() ) ) {
 						return( false );
 					}
@@ -354,7 +354,7 @@ public class CFSecBuffSecSession
 				}
 			}
 			else {
-				if( rhs.getRequiredSecUserId() != null && !getRequiredSecUserId().isNull()) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					return( false );
 				}
 			}
@@ -377,8 +377,8 @@ public class CFSecBuffSecSession
 		}
 		else if( obj instanceof ICFSecSecSessionByStartIdxKey ) {
 			ICFSecSecSessionByStartIdxKey rhs = (ICFSecSecSessionByStartIdxKey)obj;
-			if( getRequiredSecUserId() != null && !getRequiredSecUserId().isNull() ) {
-				if( rhs.getRequiredSecUserId() != null && !rhs.getRequiredSecUserId().isNull() ) {
+			if( getRequiredSecUserId() != null ) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					if( ! getRequiredSecUserId().equals( rhs.getRequiredSecUserId() ) ) {
 						return( false );
 					}
@@ -388,7 +388,7 @@ public class CFSecBuffSecSession
 				}
 			}
 			else {
-				if( rhs.getRequiredSecUserId() != null && !getRequiredSecUserId().isNull()) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					return( false );
 				}
 			}
@@ -411,8 +411,8 @@ public class CFSecBuffSecSession
 		}
 		else if( obj instanceof ICFSecSecSessionByFinishIdxKey ) {
 			ICFSecSecSessionByFinishIdxKey rhs = (ICFSecSecSessionByFinishIdxKey)obj;
-			if( getRequiredSecUserId() != null && !getRequiredSecUserId().isNull() ) {
-				if( rhs.getRequiredSecUserId() != null && !rhs.getRequiredSecUserId().isNull() ) {
+			if( getRequiredSecUserId() != null ) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					if( ! getRequiredSecUserId().equals( rhs.getRequiredSecUserId() ) ) {
 						return( false );
 					}
@@ -422,7 +422,7 @@ public class CFSecBuffSecSession
 				}
 			}
 			else {
-				if( rhs.getRequiredSecUserId() != null && !getRequiredSecUserId().isNull()) {
+				if( rhs.getRequiredSecUserId() != null ) {
 					return( false );
 				}
 			}
@@ -445,8 +445,8 @@ public class CFSecBuffSecSession
 		}
 		else if( obj instanceof ICFSecSecSessionBySecProxyIdxKey ) {
 			ICFSecSecSessionBySecProxyIdxKey rhs = (ICFSecSecSessionBySecProxyIdxKey)obj;
-			if( getOptionalSecProxyId() != null && !getOptionalSecProxyId().isNull() ) {
-				if( rhs.getOptionalSecProxyId() != null && !rhs.getOptionalSecProxyId().isNull() ) {
+			if( getOptionalSecProxyId() != null ) {
+				if( rhs.getOptionalSecProxyId() != null ) {
 					if( ! getOptionalSecProxyId().equals( rhs.getOptionalSecProxyId() ) ) {
 						return( false );
 					}
@@ -456,7 +456,7 @@ public class CFSecBuffSecSession
 				}
 			}
 			else {
-				if( rhs.getOptionalSecProxyId() != null && !getOptionalSecProxyId().isNull()) {
+				if( rhs.getOptionalSecProxyId() != null ) {
 					return( false );
 				}
 			}
